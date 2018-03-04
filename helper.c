@@ -170,6 +170,3 @@ void release_press (void){
 		button = getbtns();
 	}
 }
-
-void save_score(void){
-}
