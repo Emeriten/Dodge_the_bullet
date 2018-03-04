@@ -135,15 +135,12 @@ void user_isr( void )
 		move_horizont(&shot[i], -1);
   }
   if ((timeoutcount % 50) == 0){							
-	  score++;											// +1 score every second alive
-	  PORTE++;											// +1 for the led for every score we get				
+	  score++;								// +1 score every second alive
+	  PORTE++;								// +1 for the led for every score we get				
   }
-	// NOTE! Seems to be a min/max value of the screen y.coordinates so the shots will appear
-	// multiple time on the screen before beeing updated with new x.coordinate.
-	// Happy accident, makes it seem like some shots are "random" generated aswell.
-  if (timeoutcount == 100){									// position of 1 shot updates every 2 seconds
-	timeoutcount = 0;
-	create_object(&shot[shot_counter], (box.piece[4].x));
+  if (timeoutcount == 100){						// position of 1 shot updates every 2 seconds
+	timeoutcount = 0;						// y-coordinate is unsigned short. So it will go "full cricle"
+	create_object(&shot[shot_counter], (box.piece[4].x));		// and appear on the screen again before getting a new x-coordinate
 	shot_counter++;
 	if (shot_counter == 20)								// Every shot is updated every 40 seconds
 		shot_counter = 0;
