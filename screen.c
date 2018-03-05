@@ -95,8 +95,8 @@ void render(void) {
     for(page = 0; page < 4; page++) {
         DISPLAY_CHANGE_TO_COMMAND_MODE;
 
-        spi_send_recv(0x22);    // Command to set the page
-        spi_send_recv(page);    // Set the current page
+        spi_send_recv(0x22);   
+        spi_send_recv(page);  
 
         spi_send_recv(0x0);
         spi_send_recv(0x10);
